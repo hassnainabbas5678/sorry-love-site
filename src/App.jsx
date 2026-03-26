@@ -128,7 +128,7 @@ function App() {
           isMuted ? "Unmute background music" : "Mute background music"
         }
       >
-        {isMuted ? "🔇 Unmute" : "🔊 Mute"}
+        {isMuted ? "🔇" : "🔊"}
       </button>
 
       <main className="hero">
