@@ -152,8 +152,7 @@ function App() {
           <div className="message">
             <p>
               My love, I know I hurt you, and I am truly sorry. That was never
-              my intention, but I take full responsibility for the pain I
-              caused. I’ve thought about everything again and again, wishing I
+              my intention. Ive thought about everything again and again, wishing I
               had done better.
             </p>
 
