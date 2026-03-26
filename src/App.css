@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@500;700;800&display=swap');
+
+:root {
+  --bg-1: #fff1f5;
+  --bg-2: #ffe4ea;
+  --bg-3: #ffd6e0;
+  --rose: #d94f70;
+  --rose-dark: #a82d4d;
+  --pink: #ff7aa2;
+  --pink-soft: #ffc5d4;
+  --card: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(255, 255, 255, 0.62);
+  --text-main: #5b2230;
+  --text-soft: #7d4052;
+  --shadow: 0 20px 60px rgba(173, 69, 98, 0.2);
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(255, 182, 193, 0.55), transparent 30%),
+    radial-gradient(circle at top right, rgba(255, 120, 160, 0.18), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(255, 105, 135, 0.22), transparent 28%),
+    linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+}
+
+.background-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.glow-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 120, 160, 0.35);
+  top: 5%;
+  left: -6%;
+}
+
+.glow-2 {
+  width: 380px;
+  height: 380px;
+  background: rgba(255, 160, 180, 0.35);
+  right: -10%;
+  top: 18%;
+}
+
+.glow-3 {
+  width: 320px;
+  height: 320px;
+  background: rgba(255, 90, 140, 0.22);
+  left: 30%;
+  bottom: -8%;
+}
+
+.floating-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-item {
+  position: absolute;
+  bottom: -15%;
+  animation-name: floatRomance;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  user-select: none;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 8px 12px rgba(255, 80, 120, 0.12));
+}
+
+@keyframes floatRomance {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(var(--drift-x), -50vh, 0) rotate(120deg) scale(1.08);
+  }
+  100% {
+    transform: translate3d(calc(var(--drift-x) * -0.5), -120vh, 0) rotate(280deg) scale(0.95);
+    opacity: 0;
+  }
+}
+
+.music-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--rose-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 25px rgba(160, 67, 94, 0.18);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.music-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(160, 67, 94, 0.24);
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 5rem 1.25rem 2rem;
+}
+
+.card {
+  width: min(100%, 930px);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  padding: 2rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  color: var(--rose);
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1.05;
+  color: var(--rose-dark);
+  text-shadow: 0 6px 20px rgba(255, 130, 160, 0.16);
+}
+
+.subtitle {
+  margin: 0.7rem auto 1.8rem;
+  max-width: 620px;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 1.5rem;
+}
+
+.couple-photo {
+  width: min(100%, 320px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 26px;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 40px rgba(163, 73, 100, 0.22);
+  animation: gentleFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.message {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.message p {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-main);
+}
+
+.signature {
+  margin-top: 1.2rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: var(--rose-dark);
+}
+
+.surprise-section {
+  margin: 2rem auto 0;
+  max-width: 560px;
+  padding: 1.2rem 1rem 1.4rem;
+  border-radius: 24px;
+  background: rgba(255, 245, 248, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.surprise-title {
+  margin: 0 0 1rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: var(--rose-dark);
+}
+
+.gift-box {
+  position: relative;
+  width: 170px;
+  height: 160px;
+  margin: 0 auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.gift-body {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  width: 130px;
+  height: 95px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #ff8fab, #ff6f91);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 18px 28px rgba(182, 69, 104, 0.25);
+}
+
+.gift-lid {
+  position: absolute;
+  left: 50%;
+  top: 26px;
+  width: 145px;
+  height: 32px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #ffb3c7, #ff8fab);
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(182, 69, 104, 0.2);
+  transition: transform 0.5s ease, top 0.5s ease;
+}
+
+.gift-box:hover .gift-lid,
+.gift-box:focus .gift-lid {
+  transform: translateX(-50%) rotate(-8deg) translateY(-5px);
+}
+
+.gift-ribbon {
+  position: absolute;
+  background: #fff4f7;
+  z-index: 2;
+}
+
+.gift-ribbon-vertical {
+  left: 50%;
+  top: 26px;
+  width: 16px;
+  height: 113px;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+.gift-ribbon-horizontal {
+  left: 50%;
+  top: 52px;
+  width: 145px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+.gift-bow {
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  z-index: 3;
+  animation: bowPulse 2s ease-in-out infinite;
+}
+
+@keyframes bowPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+.burst-flower {
+  position: absolute;
+  left: 50%;
+  top: 72px;
+  transform: translateX(-50%);
+  font-size: var(--size);
+  pointer-events: none;
+  animation: burstUp 1.8s ease-out forwards;
+  animation-delay: var(--delay);
+  z-index: 10;
+  filter: drop-shadow(0 8px 10px rgba(255, 80, 120, 0.16));
+}
+
+@keyframes burstUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px) scale(0.5) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x)), var(--y)) scale(1.15) rotate(var(--rotate));
+  }
+}
+
+.gift-note {
+  margin: 1rem 0 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.note-box {
+  margin: 1.8rem auto 0;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 22px;
+  padding: 1rem 1.1rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.note-title {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: var(--rose-dark);
+}
+
+.note-text {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 5.5rem;
+  }
+
+  .card {
+    padding: 1.4rem 1rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  .message p {
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .signature {
+    font-size: 1.7rem;
+  }
+
+  .music-toggle {
+    top: 0.85rem;
+    right: 0.85rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .gift-box {
+    width: 150px;
+    height: 145px;
+  }
+
+  .gift-body {
+    width: 118px;
+    height: 88px;
+  }
+
+  .gift-lid,
+  .gift-ribbon-horizontal {
+    width: 132px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+  }
+
+  .subtitle {
+    margin-bottom: 1.2rem;
+  }
+
+  .couple-photo {
+    width: min(100%, 260px);
+    border-radius: 22px;
+  }
+
+  .note-box,
+  .surprise-section {
+    padding: 0.95rem;
+  }
+
+  .surprise-title {
+    font-size: 1.75rem;
+  }
+}
